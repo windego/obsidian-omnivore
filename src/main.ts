@@ -57,16 +57,13 @@ const DEFAULT_SETTINGS: Settings = {
 {{#author}}
 文章作者: {{{author}}}
 {{/author}}
-{{#labels.length}}
-标签:
-{{#labels}}  - {{{name}}}
-{{/labels}}
-{{/labels.length}}
 保存时间: {{{dateSaved}}}
 ---
+{{#labels.length}}
+{{#labels}}#{{{name}}} {{/labels}}
+{{/labels.length}}
 
 #Omnivore
-
 [使用Omnivore打开]({{{omnivoreUrl}}})
 [打开原文]({{{originalUrl}}})
 {{#content}}

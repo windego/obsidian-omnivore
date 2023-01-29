@@ -3,13 +3,11 @@
 {{#author}}
 文章作者: {{{author}}}
 {{/author}}
-{{#labels.length}}
-tags:
-{{#labels}}  - {{{name}}}
-{{/labels}}
-{{/labels.length}}
 保存时间: {{{dateSaved}}}
 ---
+{{#labels.length}}
+{{#labels}}#{{{name}}} {{/labels}}
+{{/labels.length}}
 
 [使用Omnivore打开]({{{omnivoreUrl}}})
 [打开原文]({{{originalUrl}}})
