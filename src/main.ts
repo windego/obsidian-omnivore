@@ -17,6 +17,7 @@ import {
   PageType,
   parseDateTime,
   unicodeSlug,
+  getPageName
 } from "./util";
 import { FolderSuggest } from "./settings/file-suggest";
 
@@ -47,28 +48,27 @@ interface Settings {
 }
 
 const DEFAULT_SETTINGS: Settings = {
-  apiKey: "",
+  apiKey: "6e376c93-f616-4e96-ac16-250c1c9e6bda",
   filter: "HIGHLIGHTS",
   syncAt: "",
   customQuery: "",
   template: `---
-title: {{{title}}}
+文章标题: {{{title}}}
 {{#author}}
-author: {{{author}}}
+文章作者: {{{author}}}
 {{/author}}
 {{#labels.length}}
 tags:
 {{#labels}}  - {{{name}}}
 {{/labels}}
 {{/labels.length}}
-date_saved: {{{dateSaved}}}
+保存时间: {{{dateSaved}}}
 ---
 
-# {{{title}}}
 #Omnivore
 
-[Read on Omnivore]({{{omnivoreUrl}}})
-[Read Original]({{{originalUrl}}})
+[使用Omnivore打开]({{{omnivoreUrl}}})
+[打开原文]({{{originalUrl}}})
 {{#content}}
 
 {{{content}}}
@@ -190,10 +190,11 @@ export default class OmnivorePlugin extends Plugin {
           }
 
           // use unicode slug to show characters from other languages in the file name
-          const pageName = `${folderName}/${unicodeSlug(
-            article.title,
-            article.savedAt
-          )}.md`;
+          // const pageName = `${folderName}/${unicodeSlug(
+          //   article.title,
+          //   article.savedAt
+          // )}.md`;
+          const pageName = `${folderName}/${article.title}.md`;
           const siteName =
             article.siteName ||
             this.siteNameFromUrl(article.originalArticleUrl);

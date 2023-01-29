@@ -9,7 +9,7 @@
 		"version": "node version-bump.mjs && git add manifest.json versions.json"
 	},
 	"keywords": [],
-	"author": "",
+	"author": "zhangweijie",
 	"license": "MIT",
 	"devDependencies": {
 		"@popperjs/core": "^2.11.6",

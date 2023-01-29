@@ -1,0 +1,35 @@
+---
+title: {{{title}}}
+{{#author}}
+author: {{{author}}}
+{{/author}}
+{{#labels.length}}
+tags:
+{{#labels}}  - {{{name}}}
+{{/labels}}
+{{/labels.length}}
+date_saved: {{{dateSaved}}}
+---
+
+# {{{title}}}
+#Omnivore
+
+[Read on Omnivore]({{{omnivoreUrl}}})
+[Read Original]({{{originalUrl}}})
+{{#content}}
+
+{{{content}}}
+{{/content}}
+
+{{#highlights.length}}
+## Highlights
+
+{{#highlights}}
+> {{{text}}} [⤴️]({{{highlightUrl}}})
+{{#note}}
+
+{{{note}}}
+{{/note}}
+
+{{/highlights}}
+{{/highlights.length}}

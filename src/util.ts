@@ -223,3 +223,12 @@ export const unicodeSlug = (str: string, savedAt: string) => {
     new Date(savedAt).getTime().toString(16)
   );
 };
+export const getPageName = (str: string, savedAt: string) => {
+  return (
+    str
+      .normalize("NFKD") // using NFKD method returns the Unicode Normalization Form of a given string.
+      .substring(0, 64) +
+    "-" +
+    DateTime.now().toFormat('yyyyLLddHHmmss')
+  );
+};

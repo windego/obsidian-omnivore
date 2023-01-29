@@ -1,0 +1,32 @@
+---
+文章标题: {{{title}}}
+{{#author}}
+文章作者: {{{author}}}
+{{/author}}
+{{#labels.length}}
+tags:
+{{#labels}}  - {{{name}}}
+{{/labels}}
+{{/labels.length}}
+保存时间: {{{dateSaved}}}
+---
+
+[使用Omnivore打开]({{{omnivoreUrl}}})
+[打开原文]({{{originalUrl}}})
+{{#content}}
+
+{{{content}}}
+{{/content}}
+
+{{#highlights.length}}
+## Highlights
+
+{{#highlights}}
+> {{{text}}} [⤴️]({{{highlightUrl}}})
+{{#note}}
+
+{{{note}}}
+{{/note}}
+
+{{/highlights}}
+{{/highlights.length}}
