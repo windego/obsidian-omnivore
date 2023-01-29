@@ -58,7 +58,7 @@ const DEFAULT_SETTINGS: Settings = {
 文章作者: {{{author}}}
 {{/author}}
 {{#labels.length}}
-tags:
+标签:
 {{#labels}}  - {{{name}}}
 {{/labels}}
 {{/labels.length}}
@@ -121,6 +121,9 @@ export default class OmnivorePlugin extends Plugin {
 
     // This adds a settings tab so the user can configure various aspects of the plugin
     this.addSettingTab(new OmnivoreSettingTab(this.app, this));
+    setTimeout(() => {
+      this.fetchOmnivore();
+    }, 500);
   }
 
   onunload() {}
@@ -159,7 +162,7 @@ export default class OmnivorePlugin extends Plugin {
     try {
       console.log(`obsidian-omnivore starting sync since: '${syncAt}`);
 
-      new Notice("🚀 Fetching articles ...");
+      new Notice("🚀 正在同步Omnivore收藏的文章 ...");
 
       const size = 50;
       for (
@@ -259,10 +262,10 @@ export default class OmnivorePlugin extends Plugin {
         }
       }
 
-      new Notice("🔖 Articles fetched");
+      new Notice("🔖 文章同步完成!");
       this.settings.syncAt = DateTime.local().toFormat(DATE_FORMAT);
     } catch (e) {
-      new Notice("Failed to fetch articles");
+      new Notice("omnivore文章同步失败!");
       console.error(e);
     } finally {
       this.settings.syncing = false;
